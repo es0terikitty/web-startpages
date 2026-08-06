@@ -17,6 +17,7 @@ html, body {
 }
 
 .container {
+  zoom: 1.2;
   display: grid;
   grid-template-columns: 1fr 460px 780px 1fr;
   grid-template-areas:
