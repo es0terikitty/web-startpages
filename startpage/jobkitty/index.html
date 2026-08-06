@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="icon" type="image/svg" href="newtab.svg">
+    <link rel="stylesheet" type="text/css" id="theme-css" href="style.css">
+    <script>document.getElementById('theme-css').href='style.css?v='+Date.now()</script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-container">
+            <div class="gif">
+                <img src="cat.gif" />
+            </div>
+        </div>
+
+        <div class="right-container">
+            <div class="head">
+                <p>> cd ~/<span class="blinking">_</span></p>
+            </div>
+
+            <div class="bookmarks">
+                <div class="category">
+                    <div class="links">
+                        <li class="title">social</li>
+                        <li><a href="https://reddit.com">reddit</a></li>
+                        <li><a href="https://youtu.be">youtube</a></li>
+                        <li><a href="https://kick.com/gmhikaru">kick</a></li>
+                        <li><a href="https://twitch.tv/finbarricade">twitch</a></li>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="links">
+                        <li class="title">dev</li>
+                        <li><a href="https://notneelpatel.xyz/WallpaperThemeConverter/">wall-themer</a></li>
+                        <li><a href="https://github.com/ItzAshOffcl/awesome-webdev-resources">resources</a></li>
+                        <li><a href="https://es0terikitty.github.io">es0terikitty</a></li>
+                        <li><a href="https://patorjk.com">patorjk</a></li>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="links">
+                        <li class="title">play</li>
+                        <li><a href="https://monkeytype.com">monkeytype</a></li>
+                        <li><a href="https://keybr.com">keybr</a></li>
+                        <li><a href="https://geoguessr.com">geoguessr</a></li>
+                        <li><a href="https://chess.com">chess</a></li>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="links">
+                        <li class="title">tools</li>
+                        <li><a href="https://gmail.com">gmail</a></li>
+                        <li><a href="https://mail.proton.me">proton</a></li>
+                        <li><a href="http://127.0.0.1:8384/">syncthing</a></li>
+                        <li><a href="https://gemini.google.com">gemini</a></li>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="links">
+                        <li class="title">piracy</li>
+                        <li><a href="https://qobuz.squid.wtf">qobuz</a></li>
+                        <li><a href="https://fmhy.net/video#anime-streaming">fmhy</a></li>
+                        <li><a href="https://everythingmoe.com">anime</a></li>
+                        <li><a href="https://web.telegram.org">telegram</a></li>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search">
+                <form id="search-form">
+                    <input type="text" id="search-input" placeholder="> scout ~/" autocomplete="off" autofocus />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const bangs = {
+            '@yt':   'https://www.youtube.com/results?search_query=',
+            '@dd':   'https://duckduckgo.com/?q=',
+            '@rd':  'https://www.reddit.com/search/?q=',
+            '@ss':   'https://www.startpage.com/sp/search?query=',
+            '@brave':'https://search.brave.com/search?q='
+        };
+
+        const input = document.getElementById('search-input');
+
+        function getUrl(str) {
+            if (str.startsWith('http://') || str.startsWith('https://'))
+                return str;
+            if (/^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+(:[0-9]+)?(\/|$)/.test(str))
+                return 'https://' + str;
+            if (/^localhost(:[0-9]+)?(\/|$)/.test(str))
+                return 'http://' + str;
+            return null;
+        }
+
+        input.addEventListener('input', function() {
+            const q = this.value.trim();
+            let match = false;
+            for (const bang of Object.keys(bangs)) {
+                if (q === bang || q.startsWith(bang + ' ')) {
+                    match = true;
+                    break;
+                }
+            }
+            this.classList.toggle('bang', match);
+        });
+
+        document.getElementById('search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let query = input.value.trim();
+            if (!query) return;
+
+            let url = getUrl(query);
+            if (url) {
+                window.open(url, '_blank');
+                input.value = '';
+                input.classList.remove('bang');
+                return;
+            }
+
+            url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+
+            for (const [bang, base] of Object.entries(bangs)) {
+                if (query.startsWith(bang + ' ') || query === bang) {
+                    const rest = query.slice(bang.length).trim();
+                    url = rest ? base + encodeURIComponent(rest) : base;
+                    break;
+                }
+            }
+
+            window.open(url, '_blank');
+            input.value = '';
+            input.classList.remove('bang');
+        });
+    </script>
+</body>
+
+</html>
