@@ -19,38 +19,34 @@
         </div>
 
         <div class="right-container">
+            <div class="term-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="term-title">kabir@esoteric — tty</span>
+            </div>
+
+            <div class="term-body">
             <div class="head">
-                <p>> cd ~/<span class="blinking">_</span></p>
+                <p>&gt; cd ~/<span class="blinking">_</span></p>
             </div>
 
             <div class="bookmarks">
                 <div class="category">
                     <div class="links">
-                        <li class="title">social</li>
-                        <li><a href="https://reddit.com">reddit</a></li>
-                        <li><a href="https://youtu.be">youtube</a></li>
-                        <li><a href="https://kick.com/gmhikaru">kick</a></li>
-                        <li><a href="https://twitch.tv/finbarricade">twitch</a></li>
-                    </div>
-                </div>
-
-                <div class="category">
-                    <div class="links">
                         <li class="title">dev</li>
-                        <li><a href="https://notneelpatel.xyz/WallpaperThemeConverter/">wall-themer</a></li>
-                        <li><a href="https://github.com/ItzAshOffcl/awesome-webdev-resources">resources</a></li>
                         <li><a href="https://es0terikitty.github.io">es0terikitty</a></li>
-                        <li><a href="https://patorjk.com">patorjk</a></li>
+                        <li><a href="https://github.com/ItzAshOffcl/awesome-webdev-resources">resources</a></li>
+                        <li><a href="https://mail.proton.me">proton</a></li>
                     </div>
                 </div>
 
                 <div class="category">
                     <div class="links">
                         <li class="title">play</li>
+                        <li><a href="https://patorjk.com">patorjk</a></li>
                         <li><a href="https://monkeytype.com">monkeytype</a></li>
                         <li><a href="https://keybr.com">keybr</a></li>
-                        <li><a href="https://geoguessr.com">geoguessr</a></li>
-                        <li><a href="https://chess.com">chess</a></li>
                     </div>
                 </div>
 
@@ -58,7 +54,6 @@
                     <div class="links">
                         <li class="title">tools</li>
                         <li><a href="https://gmail.com">gmail</a></li>
-                        <li><a href="https://mail.proton.me">proton</a></li>
                         <li><a href="http://127.0.0.1:8384/">syncthing</a></li>
                         <li><a href="https://gemini.google.com">gemini</a></li>
                     </div>
@@ -66,11 +61,10 @@
 
                 <div class="category">
                     <div class="links">
-                        <li class="title">piracy</li>
-                        <li><a href="https://qobuz.squid.wtf">qobuz</a></li>
-                        <li><a href="https://fmhy.net/video#anime-streaming">fmhy</a></li>
+                        <li class="title">media</li>
+                        <li><a href="https://kick.com/gmhikaru">kick</a></li>
                         <li><a href="https://everythingmoe.com">anime</a></li>
-                        <li><a href="https://web.telegram.org">telegram</a></li>
+                        <li><a href="https://fmhy.net/video#anime-streaming">fmhy</a></li>
                     </div>
                 </div>
             </div>
@@ -79,6 +73,11 @@
                 <form id="search-form">
                     <input type="text" id="search-input" placeholder="> scout ~/" autocomplete="off" autofocus />
                 </form>
+            </div>
+            </div>
+
+            <div class="status">
+                <span id="clock">--:--:--</span>
             </div>
         </div>
     </div>
@@ -143,6 +142,16 @@
             input.value = '';
             input.classList.remove('bang');
         });
+
+        // live clock in the status bar
+        const clockEl = document.getElementById('clock');
+        function tickClock() {
+            const d = new Date();
+            const p = n => String(n).padStart(2, '0');
+            clockEl.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+        }
+        tickClock();
+        setInterval(tickClock, 1000);
     </script>
 </body>
 
