@@ -10,8 +10,14 @@
     <script>
         (function() {
             var themes = ['mizuki', 'crimson-blood', 'rose-pine', 'gruvbox', 'nord', 'mocha', 'tokyo-night'];
-            var pick = themes[Math.floor(Math.random() * themes.length)];
+            var last = null;
+            try { last = sessionStorage.getItem('jobkitty-theme'); } catch (e) {}
+            var pick;
+            do {
+                pick = themes[Math.floor(Math.random() * themes.length)];
+            } while (themes.length > 1 && pick === last);
             document.documentElement.setAttribute('data-theme', pick);
+            try { sessionStorage.setItem('jobkitty-theme', pick); } catch (e) {}
         })();
     </script>
     <style>.container { zoom: 1.04; }</style>
@@ -159,6 +165,17 @@
         }
         tickClock();
         setInterval(tickClock, 1000);
+
+        window.addEventListener('pageshow', function(e) {
+            if (!e.persisted) return;
+            var themes = ['mizuki', 'crimson-blood', 'rose-pine', 'gruvbox', 'nord', 'mocha', 'tokyo-night'];
+            var last = document.documentElement.getAttribute('data-theme');
+            var pick;
+            do {
+                pick = themes[Math.floor(Math.random() * themes.length)];
+            } while (themes.length > 1 && pick === last);
+            document.documentElement.setAttribute('data-theme', pick);
+        });
     </script>
 </body>
 
