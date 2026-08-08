@@ -16,6 +16,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  perspective: 1200px;
 }
 
 /* subtle vignette so the page isn't flat */
@@ -37,6 +38,16 @@ html::after {
   justify-items: center;
   align-items: center;
   min-height: 100%;
+  animation: swing-in-top-fwd 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@-webkit-keyframes swing-in-top-fwd {
+  0% { -webkit-transform: rotateX(-100deg); transform: rotateX(-100deg); -webkit-transform-origin: top; transform-origin: top; opacity: 0; }
+  100% { -webkit-transform: rotateX(0deg); transform: rotateX(0deg); -webkit-transform-origin: top; transform-origin: top; opacity: 1; }
+}
+@keyframes swing-in-top-fwd {
+  0% { -webkit-transform: rotateX(-100deg); transform: rotateX(-100deg); -webkit-transform-origin: top; transform-origin: top; opacity: 0; }
+  100% { -webkit-transform: rotateX(0deg); transform: rotateX(0deg); -webkit-transform-origin: top; transform-origin: top; opacity: 1; }
 }
 
 .left-container { grid-area: left; aspect-ratio: 1/1; }
@@ -97,19 +108,9 @@ html::after {
   padding-top: 10px;
   margin-bottom: 26px;
   white-space: nowrap;
-  animation: fallin 1.4s cubic-bezier(0.2, 0.8, 0.3, 1.2) 0.1s both;
 }
 
 .head p { margin: 0; }
-
-@keyframes fallin {
-  0%   { transform: translateY(-140px); opacity: 0; }
-  55%  { transform: translateY(14px);  opacity: 1; }
-  70%  { transform: translateY(-6px); }
-  83%  { transform: translateY(4px); }
-  92%  { transform: translateY(-2px); }
-  100% { transform: translateY(0); }
-}
 
 .category { display: flex; flex-direction: column; width: 180px; margin-bottom: 21px; }
 .bookmarks { display: flex; justify-content: center; }
