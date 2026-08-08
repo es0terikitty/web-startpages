@@ -7,6 +7,60 @@
     --color-dim: #c8b9ca;
 }
 
+[data-theme="crimson-blood"] {
+    --color-bg: #1a1214;
+    --color-fg: #f4ebe0;
+    --color-link: #e87a30;
+    --color-link-hover: #e02030;
+    --color-title: #e02030;
+    --color-dim: #8a6e78;
+}
+
+[data-theme="rose-pine"] {
+    --color-bg: #191724;
+    --color-fg: #e0def4;
+    --color-link: #eb6f92;
+    --color-link-hover: #f6c177;
+    --color-title: #ebbcba;
+    --color-dim: #908caa;
+}
+
+[data-theme="gruvbox"] {
+    --color-bg: #282828;
+    --color-fg: #ebdbb2;
+    --color-link: #83a598;
+    --color-link-hover: #fb4934;
+    --color-title: #d79921;
+    --color-dim: #a89984;
+}
+
+[data-theme="nord"] {
+    --color-bg: #2e3440;
+    --color-fg: #d8dee9;
+    --color-link: #88c0d0;
+    --color-link-hover: #bf616a;
+    --color-title: #88c0d0;
+    --color-dim: #4c566a;
+}
+
+[data-theme="mocha"] {
+    --color-bg: #1e1e2e;
+    --color-fg: #cdd6f4;
+    --color-link: #89b4fa;
+    --color-link-hover: #f38ba8;
+    --color-title: #cba6f7;
+    --color-dim: #a6adc8;
+}
+
+[data-theme="tokyo-night"] {
+    --color-bg: #1a1b26;
+    --color-fg: #c0caf5;
+    --color-link: #7aa2f7;
+    --color-link-hover: #f7768e;
+    --color-title: #bb9af7;
+    --color-dim: #565f89;
+}
+
 html, body {
   background: var(--color-bg);
   color: var(--color-fg);

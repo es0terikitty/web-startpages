@@ -7,6 +7,13 @@
     <link rel="icon" type="image/svg" href="newtab.svg">
     <link rel="stylesheet" type="text/css" id="theme-css" href="style.css">
     <script>document.getElementById('theme-css').href='style.css?v='+Date.now()</script>
+    <script>
+        (function() {
+            var themes = ['mizuki', 'crimson-blood', 'rose-pine', 'gruvbox', 'nord', 'mocha', 'tokyo-night'];
+            var pick = themes[Math.floor(Math.random() * themes.length)];
+            document.documentElement.setAttribute('data-theme', pick);
+        })();
+    </script>
     <style>.container { zoom: 1.04; }</style>
 </head>
 
