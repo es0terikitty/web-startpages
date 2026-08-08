@@ -6,7 +6,7 @@ A personal browser startpage, styled as a terminal window with a live clock and 
 
 **https://es0terikitty.github.io/web-startpages/startpage/jobkitty/**
 
-<video src="startpage/jobkitty/showcase.mp4" controls autoplay muted loop></video>
+https://github.com/es0terikitty/web-startpages/raw/main/startpage/jobkitty/showcase.mp4
 
 ## Features
 
