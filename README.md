@@ -6,7 +6,7 @@ A personal browser startpage, styled as a terminal window with a live clock and 
 
 **https://es0terikitty.github.io/web-startpages/startpage/jobkitty/**
 
-![startpage preview](startpage/jobkitty/startpage.gif)
+![startpage preview](startpage/jobkitty/showcase.mp4)
 
 ## Features
 
@@ -53,7 +53,8 @@ startpage/jobkitty/
 ├── cat.gif         # sidebar art
 ├── newtab.svg      # favicon
 ├── manifest.json   # chrome extension manifest
-└── startpage.gif   # preview used in this README
+├── showcase.mp4    # preview video used in this README
+└── startpage.gif
 ```
 
 ## Development
