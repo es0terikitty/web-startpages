@@ -4,7 +4,7 @@ A personal browser startpage, styled as a terminal window with a live clock and 
 
 ## Live demo
 
-**https://es0terikitty.github.io/web-startpages/startpage/jobkitty/**
+**https://hiraeth-dev.github.io/web-startpages/startpage/jobkitty/**
 
 ![startpage preview](startpage/jobkitty/showcase.gif)
 
